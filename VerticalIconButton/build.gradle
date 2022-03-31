@@ -41,16 +41,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.release
-//
-//                groupId = 'com.github.ilhamhadisyah'
-//                artifactId = 'VerticalIconButton'
-//                version = '1.3'
-//            }
-//        }
-//    }
-//}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.ilhamhadisyah'
+                artifactId = 'VerticalIconButton'
+                version = '1.4'
+            }
+        }
+    }
+}
