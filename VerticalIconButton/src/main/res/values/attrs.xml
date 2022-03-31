@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerticalIconButton">
+        <attr name="button_text" format="string" />
+        <attr name="icon" format="reference" />
+        <attr name="button_background_color_normal" format="color" />
+        <attr name="button_background_color_pressed" format="color" />
+        <attr name="icon_background_color" format="color" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="button_text_color" format="color" />
+        <attr name="button_text_size" format="dimension" />
+    </declare-styleable>
+</resources>
