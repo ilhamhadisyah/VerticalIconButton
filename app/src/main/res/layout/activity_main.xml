@@ -14,31 +14,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.hadisyah.verticaliconbutton.VerticalIconButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            app:button_background_color_normal="@color/btn1_normal"
-            app:button_background_color_pressed="@color/btn1_pressed"
-            app:button_text="Button 1"
-            app:button_text_size="6sp"
-            app:icon="@mipmap/ic_launcher"
-            app:icon_weight="5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:stroke_color="@color/black"
-            app:stroke_width="10" />
 
         <com.hadisyah.verticaliconbutton.VerticalIconButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            app:icon_margin_top="50dp"
             android:layout_weight="1"
-            app:button_background_color_normal="@color/btn1_normal"
-            app:button_background_color_pressed="@color/btn1_pressed"
+            app:button_background_color_normal="@color/red_btn"
             app:button_text="This is an example of the button"
             app:button_text_size="8sp"
             app:icon_weight="200"

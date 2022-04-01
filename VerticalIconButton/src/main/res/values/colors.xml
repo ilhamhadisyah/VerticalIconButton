@@ -2,4 +2,7 @@
 <resources>
     <color name="default_background_color">#1E88E5</color>
     <color name="default_background_color_pressed">#1B73C1</color>
+
+    <color name="red_btn">#F97676</color>
+    <color name="red_btn_pressed">#C05454</color>
 </resources>

@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -18,7 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconButton : LinearLayout, View.OnTouchListener {
+class VerticalIconButton : LinearLayout {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0
@@ -36,8 +35,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
     private var iconFile: Drawable? = null
     private var textInside: String? = "button"
 
-    private var backgroundColorNormal: Int? = 0
-    private var backgroundColorPressed: Int? = 0
+    private var backgroundColor: Int? = 0
 
     private var iconBackground: Int? = 0
     private var unitTextSize: Float? = 12.0f
@@ -46,6 +44,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
     private var strokeWidth: Int? = 0
 
     private var iconWeight: Int? = 0
+    private var iconMargin : Float? = 0.0f
 
     @ColorInt
     var buttonTextColor: Int? = 0
@@ -83,13 +82,9 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
             mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconButton, styleAttr, 0)
         iconFile = arr.getDrawable(R.styleable.VerticalIconButton_icon)
         textInside = arr.getString(R.styleable.VerticalIconButton_button_text)
-        backgroundColorNormal = arr.getColor(
+        backgroundColor = arr.getColor(
             R.styleable.VerticalIconButton_button_background_color_normal,
             resources.getColor(R.color.default_background_color)
-        )
-        backgroundColorPressed = arr.getColor(
-            R.styleable.VerticalIconButton_button_background_color_pressed,
-            resources.getColor(R.color.default_background_color_pressed)
         )
         iconBackground = arr.getColor(
             R.styleable.VerticalIconButton_icon_background_color, Color.WHITE
@@ -100,14 +95,13 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         buttonTextColor =
             arr.getResourceId(R.styleable.VerticalIconButton_button_text_color, Color.WHITE)
         iconWeight = arr.getInteger(R.styleable.VerticalIconButton_icon_weight, 150)
-
+        iconMargin = arr.getDimension(R.styleable.VerticalIconButton_icon_margin_top,10.0f)
 
         cardView = findViewById(R.id.cardView)
         buttonText = findViewById(R.id.button_text)
         iconImage = findViewById(R.id.image_icon)
         alphaLayer = findViewById(R.id.alpha_layer)
         rootLayout = findViewById(R.id.root_layout)
-        setOnTouchListener(this)
 
         /** Check if icon added */
         if (iconFile != null) {
@@ -134,7 +128,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         }
 
         /** Check if background color added */
-        setBackground(backgroundColorNormal as Int)
+        setBackground(backgroundColor as Int)
 
         setTextSize(unitTextSize as Float)
 
@@ -155,18 +149,19 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         /** Check if icon weight added */
         setIconSize(iconWeight as Int)
 
+        /** Check if icon weight added */
+        setIconMarginTop(iconMargin as Float)
 
-        alphaLayer.setOnTouchListener { _, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> setBackground(backgroundColorPressed as Int)
-                MotionEvent.ACTION_UP -> setBackground(backgroundColorNormal as Int)
-            }
-            false
-        }
     }
 
     fun setStrokeWeight(weight: Int) {
         rootLayout.strokeWidth = weight
+    }
+
+    fun setIconMarginTop(margin : Float){
+        val layoutParams : MarginLayoutParams = cardView.layoutParams as MarginLayoutParams
+        layoutParams.setMargins(0,margin.toInt(),0,0)
+        cardView.requestLayout()
     }
 
     fun setIconSize(weight: Int) {
@@ -203,13 +198,4 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         buttonText.setTextSize(TypedValue.COMPLEX_UNIT_SP, floatTextSize)
     }
 
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when (event?.action) {
-            MotionEvent.ACTION_BUTTON_PRESS -> {
-                setBackground(Color.RED)
-                return true
-            }
-        }
-        return false
-    }
 }

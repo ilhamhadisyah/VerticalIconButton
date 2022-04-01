@@ -11,4 +11,7 @@
 
     <color name="btn1_normal">#1E88E5</color>
     <color name="btn1_pressed">#1B73C1</color>
+
+    <color name="red_btn">#F97676</color>
+    <color name="red_btn_pressed">#C05454</color>
 </resources>
