@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout_default"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
@@ -12,24 +12,33 @@
     app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/alpha_layer_default"
+        android:id="@+id/alpha_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="15dp">
 
-        <ImageView
-            android:id="@+id/image_icon_default"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="@string/icon"
-            android:elevation="0dp"
-            android:scaleType="fitCenter"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ImageContrastCheck" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/icon"
+                android:elevation="0dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                tools:ignore="ImageContrastCheck" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/button_text_default"
+            android:id="@+id/button_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -37,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_icon_default" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

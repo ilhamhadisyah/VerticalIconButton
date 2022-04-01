@@ -8,20 +8,23 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconButton : LinearLayout {
+class VerticalIconBoxedButton  : LinearLayout {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0
     private lateinit var view: View
 
     /** Core Views */
+    private lateinit var cardView: CardView
     private lateinit var rootLayout: MaterialCardView
     private lateinit var buttonText: TextView
     private lateinit var iconImage: ImageView
@@ -34,6 +37,7 @@ class VerticalIconButton : LinearLayout {
 
     private var backgroundColor: Int? = 0
 
+    private var iconBackground: Int? = 0
     private var unitTextSize: Float? = 12.0f
 
     private var strokeColor: Int? = 0
@@ -72,41 +76,45 @@ class VerticalIconButton : LinearLayout {
     @SuppressLint("ClickableViewAccessibility")
     private fun initView() {
         this.view = this
-        inflate(mContext, R.layout.button_layout, this)
+        inflate(mContext, R.layout.icon_boxed_button_layout, this)
 
         val arr: TypedArray =
-            mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconButton, styleAttr, 0)
-        iconFile = arr.getDrawable(R.styleable.VerticalIconButton_n_icon)
-        textInside = arr.getString(R.styleable.VerticalIconButton_n_button_text)
+            mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconBoxedButton, styleAttr, 0)
+        iconFile = arr.getDrawable(R.styleable.VerticalIconBoxedButton_icon)
+        textInside = arr.getString(R.styleable.VerticalIconBoxedButton_button_text)
         backgroundColor = arr.getColor(
-            R.styleable.VerticalIconButton_n_button_background_color_normal,
+            R.styleable.VerticalIconBoxedButton_button_background_color_normal,
             resources.getColor(R.color.default_background_color)
         )
-        strokeWidth = arr.getInteger(R.styleable.VerticalIconButton_n_stroke_width, 0)
+        iconBackground = arr.getColor(
+            R.styleable.VerticalIconBoxedButton_icon_background_color, Color.WHITE
+        )
+        strokeWidth = arr.getInteger(R.styleable.VerticalIconBoxedButton_stroke_width, 0)
         strokeColor = arr.getColor(R.styleable.VerticalIconButton_n_stroke_color, Color.WHITE)
-        unitTextSize = arr.getDimension(R.styleable.VerticalIconButton_n_button_text_size, 12.0f)
+        unitTextSize = arr.getDimension(R.styleable.VerticalIconBoxedButton_button_text_size, 12.0f)
         buttonTextColor =
-            arr.getResourceId(R.styleable.VerticalIconButton_n_button_text_color, Color.WHITE)
-        iconWeight = arr.getInteger(R.styleable.VerticalIconButton_n_icon_weight, 90)
-        iconMargin = arr.getDimension(R.styleable.VerticalIconButton_n_icon_margin_top, 10.0f)
+            arr.getResourceId(R.styleable.VerticalIconBoxedButton_button_text_color, Color.WHITE)
+        iconWeight = arr.getInteger(R.styleable.VerticalIconBoxedButton_icon_weight, 150)
+        iconMargin = arr.getDimension(R.styleable.VerticalIconBoxedButton_icon_margin_top, 10.0f)
 
-        buttonText = findViewById(R.id.button_text_default)
-        iconImage = findViewById(R.id.image_icon_default)
-        alphaLayer = findViewById(R.id.alpha_layer_default)
-        rootLayout = findViewById(R.id.root_layout_default)
+        cardView = findViewById(R.id.cardView)
+        buttonText = findViewById(R.id.button_text)
+        iconImage = findViewById(R.id.image_icon)
+        alphaLayer = findViewById(R.id.alpha_layer)
+        rootLayout = findViewById(R.id.root_layout)
 
         /** Check if icon added */
         if (iconFile != null) {
             setDrawableIcon(iconFile as Drawable)
             arr.recycle()
         } else {
-            iconImage.visibility = View.GONE
+            cardView.visibility = View.GONE
             val mConstraintSet = ConstraintSet()
             mConstraintSet.clone(alphaLayer)
             mConstraintSet.connect(
-                R.id.button_text_default,
+                R.id.button_text,
                 ConstraintSet.TOP,
-                R.id.alpha_layer_default,
+                R.id.alpha_layer,
                 ConstraintSet.TOP
             )
             mConstraintSet.applyTo(alphaLayer)
@@ -123,6 +131,9 @@ class VerticalIconButton : LinearLayout {
         setBackground(backgroundColor as Int)
 
         setTextSize(unitTextSize as Float)
+
+        /** Check if icon background added */
+        setIconBackground(iconBackground as Int)
 
         /** Check if textColor added */
         setButtonTextColor(buttonTextColor as Int)
@@ -148,9 +159,9 @@ class VerticalIconButton : LinearLayout {
     }
 
     fun setIconMarginTop(margin: Float) {
-        val layoutParams: ConstraintLayout.LayoutParams = iconImage.layoutParams as ConstraintLayout.LayoutParams
-        layoutParams.setMargins(0,margin.toInt(),0,0)
-        iconImage.layoutParams = layoutParams
+        val layoutParams: MarginLayoutParams = cardView.layoutParams as MarginLayoutParams
+        layoutParams.setMargins(0, margin.toInt(), 0, 0)
+        cardView.requestLayout()
     }
 
     fun setIconSize(weight: Int) {
@@ -179,8 +190,11 @@ class VerticalIconButton : LinearLayout {
         alphaLayer.setBackgroundColor(color)
     }
 
+    fun setIconBackground(color: Int) {
+        cardView.setCardBackgroundColor(color)
+    }
+
     fun setTextSize(floatTextSize: Float) {
         buttonText.setTextSize(TypedValue.COMPLEX_UNIT_SP, floatTextSize)
     }
-
 }
