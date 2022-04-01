@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            app:stroke_width="10"
+            app:stroke_color="@color/black"
             android:layout_weight="1"
             app:button_text="Button 1"
             app:button_text_size="6sp"

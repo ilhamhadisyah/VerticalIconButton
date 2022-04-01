@@ -16,6 +16,7 @@ import androidx.annotation.ColorInt
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import com.google.android.material.card.MaterialCardView
 
 class VerticalIconButton : LinearLayout, View.OnTouchListener {
     private var mContext: Context
@@ -25,6 +26,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
 
     /** Core Views */
     private lateinit var cardView: CardView
+    private lateinit var rootLayout: MaterialCardView
     private lateinit var buttonText: TextView
     private lateinit var iconImage: ImageView
     private lateinit var alphaLayer: ConstraintLayout
@@ -41,7 +43,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
     private var unitTextSize: Float? = 12.0f
 
     private var strokeColor: Int? = 0
-    private var strokeWidth: Float? = 0.0f
+    private var strokeWidth: Int? = 0
 
     @ColorInt
     var buttonTextColor: Int? = 0
@@ -90,7 +92,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         iconBackground = arr.getColor(
             R.styleable.VerticalIconButton_icon_background_color, Color.WHITE
         )
-        strokeWidth = arr.getDimension(R.styleable.VerticalIconButton_stroke_width, 0.0f)
+        strokeWidth = arr.getInteger(R.styleable.VerticalIconButton_stroke_width, 0)
         strokeColor = arr.getColor(R.styleable.VerticalIconButton_stroke_color, Color.WHITE)
         unitTextSize = arr.getDimension(R.styleable.VerticalIconButton_button_text_size, 12.0f)
         buttonTextColor =
@@ -100,6 +102,7 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         buttonText = findViewById(R.id.button_text)
         iconImage = findViewById(R.id.image_icon)
         alphaLayer = findViewById(R.id.alpha_layer)
+        rootLayout = findViewById(R.id.root_layout)
         setOnTouchListener(this)
 
         /** Check if icon added */
@@ -110,7 +113,12 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
             cardView.visibility = View.GONE
             val mConstraintSet = ConstraintSet()
             mConstraintSet.clone(alphaLayer)
-            mConstraintSet.connect(R.id.button_text,ConstraintSet.TOP,R.id.alpha_layer,ConstraintSet.TOP)
+            mConstraintSet.connect(
+                R.id.button_text,
+                ConstraintSet.TOP,
+                R.id.alpha_layer,
+                ConstraintSet.TOP
+            )
             mConstraintSet.applyTo(alphaLayer)
 
 
@@ -134,13 +142,30 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         /** Check if textColor added */
         setButtonTextColor(buttonTextColor as Int)
 
-        alphaLayer.setOnTouchListener { v, event ->
+        /** Check if stroke added */
+        setStrokeWeight(strokeWidth as Int)
+
+        /** Check if stroke added */
+        if (strokeColor != 0) {
+            setStrokeColor(strokeColor as Int)
+        }
+
+
+        alphaLayer.setOnTouchListener { _, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> setBackground(backgroundColorPressed as Int)
                 MotionEvent.ACTION_UP -> setBackground(backgroundColorNormal as Int)
             }
             false
         }
+    }
+
+    fun setStrokeWeight(weight: Int) {
+        rootLayout.strokeWidth = weight
+    }
+
+    fun setStrokeColor(color: Int) {
+        rootLayout.strokeColor = color
     }
 
     fun setButtonTextColor(color: Int) {
