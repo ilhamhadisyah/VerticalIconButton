@@ -76,7 +76,6 @@ icon_margin_top | dimension | set icon margin top (default 0)
 This software uses following technologies with great appreciation:
 
 * [AndroidX](https://developer.android.com/jetpack/androidx)
-* [ColorSlider](https://github.com/naz013/ColorSlider)
 * [gradle-maven-publish-plugin](https://github.com/vanniktech/gradle-maven-publish-plugin)
 * [Material Components for Android](https://material.io/components)
 
