@@ -4,7 +4,6 @@
 [![](https://img.shields.io/github/issues/ilhamhadisyah/VerticalIconButton)](https://github.com/ilhamhadisyah/VerticalIconButton/issues)
 [![](https://img.shields.io/github/forks/ilhamhadisyah/VerticalIconButton?color=blue)]()
 [![](https://img.shields.io/github/stars/ilhamhadisyah/VerticalIconButton?color=yellow)]()
-[![](https://img.shields.io/github/license/ilhamhadisyah/VerticalIconButton?label=Apache)](https://github.com/ilhamhadisyah/VerticalIconButton/blob/master/LICENSE)
 
 <img src="./images/sample.jpg" width="250">
 
@@ -82,6 +81,8 @@ This software uses following technologies with great appreciation:
 ### License
 
 Copyright 2022 Ilham Hadisyah
+
+[![](https://img.shields.io/github/license/ilhamhadisyah/VerticalIconButton?label=Apache)](https://github.com/ilhamhadisyah/VerticalIconButton/blob/master/LICENSE)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
