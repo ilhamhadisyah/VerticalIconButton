@@ -26,8 +26,8 @@ there always have left bottom alignment, but you still can modify those model an
 
 ### Getting Started
 
-##### Gradle
-```gradle.setting
+##### Gradle.setting
+```gradle
 dependencyResolutionManagement {
     ...
     repositories {
