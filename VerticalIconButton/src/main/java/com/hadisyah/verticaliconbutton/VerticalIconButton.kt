@@ -45,6 +45,8 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
     private var strokeColor: Int? = 0
     private var strokeWidth: Int? = 0
 
+    private var iconWeight: Int? = 0
+
     @ColorInt
     var buttonTextColor: Int? = 0
 
@@ -97,6 +99,8 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
         unitTextSize = arr.getDimension(R.styleable.VerticalIconButton_button_text_size, 12.0f)
         buttonTextColor =
             arr.getResourceId(R.styleable.VerticalIconButton_button_text_color, Color.WHITE)
+        iconWeight = arr.getInteger(R.styleable.VerticalIconButton_icon_weight, 150)
+
 
         cardView = findViewById(R.id.cardView)
         buttonText = findViewById(R.id.button_text)
@@ -120,8 +124,6 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
                 ConstraintSet.TOP
             )
             mConstraintSet.applyTo(alphaLayer)
-
-
         }
 
         /** Check if text added */
@@ -150,6 +152,9 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
             setStrokeColor(strokeColor as Int)
         }
 
+        /** Check if icon weight added */
+        setIconSize(iconWeight as Int)
+
 
         alphaLayer.setOnTouchListener { _, event ->
             when (event?.action) {
@@ -162,6 +167,12 @@ class VerticalIconButton : LinearLayout, View.OnTouchListener {
 
     fun setStrokeWeight(weight: Int) {
         rootLayout.strokeWidth = weight
+    }
+
+    fun setIconSize(weight: Int) {
+        iconImage.layoutParams.height = weight
+        iconImage.layoutParams.width = weight
+        iconImage.requestLayout()
     }
 
     fun setStrokeColor(color: Int) {

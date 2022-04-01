@@ -10,5 +10,6 @@
         <attr name="stroke_color" format="color" />
         <attr name="button_text_color" format="color" />
         <attr name="button_text_size" format="dimension" />
+        <attr name="icon_weight" format="integer"/>
     </declare-styleable>
 </resources>
