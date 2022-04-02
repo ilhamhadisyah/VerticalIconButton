@@ -18,7 +18,7 @@ there always have left bottom alignment, but you still can modify those model an
 
 ## Features
 
-- **Make your app more beauutiful:** with touch effect and unique layout
+- **Make your app more beautiful:** with touch effect and unique layout
 - **Support color changing:** can easily do even change the icon background
 - **Various height:** you can set the margin of the icon so you can easily construct your button only in one way
 - **RelativeLayout support:** will make you easier to implement it in any layout
@@ -38,6 +38,7 @@ dependencyResolutionManagement {
 ```
 ```gradle
 dependencies {
+    ...
     implementation 'com.github.ilhamhadisyah:VerticalIconButton:1.8'
 }
 ```
