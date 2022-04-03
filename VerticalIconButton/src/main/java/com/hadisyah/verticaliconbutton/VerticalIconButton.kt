@@ -8,14 +8,13 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.ColorInt
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconButton : RelativeLayout {
+class VerticalIconButton : MaterialCardView {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0
@@ -73,6 +72,8 @@ class VerticalIconButton : RelativeLayout {
     private fun initView() {
         this.view = this
         inflate(mContext, R.layout.button_layout, this)
+        this.isClickable = true
+        this.isFocusable = true
 
         val arr: TypedArray =
             mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconButton, styleAttr, 0)
@@ -132,7 +133,7 @@ class VerticalIconButton : RelativeLayout {
 
         /** Check if stroke added */
         if (strokeColor != 0) {
-            setStrokeColor(strokeColor as Int)
+            setButtonStrokeColor(strokeColor as Int)
         }
 
         /** Check if icon weight added */
@@ -148,8 +149,9 @@ class VerticalIconButton : RelativeLayout {
     }
 
     fun setIconMarginTop(margin: Float) {
-        val layoutParams: ConstraintLayout.LayoutParams = iconImage.layoutParams as ConstraintLayout.LayoutParams
-        layoutParams.setMargins(0,margin.toInt(),0,0)
+        val layoutParams: ConstraintLayout.LayoutParams =
+            iconImage.layoutParams as ConstraintLayout.LayoutParams
+        layoutParams.setMargins(0, margin.toInt(), 0, 0)
         iconImage.layoutParams = layoutParams
     }
 
@@ -159,7 +161,7 @@ class VerticalIconButton : RelativeLayout {
         iconImage.requestLayout()
     }
 
-    fun setStrokeColor(color: Int) {
+    fun setButtonStrokeColor(color: Int) {
         rootLayout.strokeColor = color
     }
 

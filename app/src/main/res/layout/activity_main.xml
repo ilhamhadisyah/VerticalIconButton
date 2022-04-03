@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.hadisyah.verticaliconbutton.VerticalIconButton
+            android:id="@+id/button_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -26,10 +27,12 @@
             app:n_button_text_size="6sp"
             app:n_icon="@mipmap/ic_launcher"
             app:n_icon_weight="90" />
+
         <com.hadisyah.verticaliconbutton.VerticalIconBoxedButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:id="@+id/button2"
             android:layout_weight="1"
             app:button_text="This is an example"
             app:button_text_size="7sp"
@@ -42,10 +45,10 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             app:button_background_color_normal="#43A047"
-            app:icon_background_color="#FDD835"
             app:button_text="This is an example"
             app:button_text_size="7sp"
             app:icon="@mipmap/ic_launcher"
+            app:icon_background_color="#FDD835"
             app:icon_weight="90" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -69,8 +72,6 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.cardview.widget.CardView
@@ -17,7 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconBoxedButton  : RelativeLayout {
+class VerticalIconBoxedButton  : MaterialCardView {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0
@@ -143,7 +142,7 @@ class VerticalIconBoxedButton  : RelativeLayout {
 
         /** Check if stroke added */
         if (strokeColor != 0) {
-            setStrokeColor(strokeColor as Int)
+            setButtonStrokeColor(strokeColor as Int)
         }
 
         /** Check if icon weight added */
@@ -170,7 +169,7 @@ class VerticalIconBoxedButton  : RelativeLayout {
         iconImage.requestLayout()
     }
 
-    fun setStrokeColor(color: Int) {
+    fun setButtonStrokeColor(color: Int) {
         rootLayout.strokeColor = color
     }
 
