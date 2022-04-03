@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -76,6 +77,12 @@ class VerticalIconBoxedButton  : MaterialCardView {
     private fun initView() {
         this.view = this
         inflate(mContext, R.layout.icon_boxed_button_layout, this)
+
+        this.isClickable = true
+        this.isFocusable = true
+        cardElevation =0.0f
+        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12f, context.resources.displayMetrics)
+//        outlineProvider = ViewOutlineProvider.
 
         val arr: TypedArray =
             mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconBoxedButton, styleAttr, 0)
