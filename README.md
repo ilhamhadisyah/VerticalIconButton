@@ -36,10 +36,12 @@ dependencyResolutionManagement {
     }
 }
 ```
+
+Always use the latest release version
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.ilhamhadisyah:VerticalIconButton:1.8'
+    implementation 'com.github.ilhamhadisyah:VerticalIconButton:release_version'
 }
 ```
 
