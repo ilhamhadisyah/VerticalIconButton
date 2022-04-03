@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.cardview.widget.CardView
@@ -17,7 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconBoxedButton  : LinearLayout {
+class VerticalIconBoxedButton  : RelativeLayout {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0

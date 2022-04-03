@@ -15,7 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.card.MaterialCardView
 
-class VerticalIconButton : LinearLayout {
+class VerticalIconButton : RelativeLayout {
     private var mContext: Context
     private lateinit var attrs: AttributeSet
     private var styleAttr = 0

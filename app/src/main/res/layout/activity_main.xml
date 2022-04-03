@@ -7,37 +7,70 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/group1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <com.hadisyah.verticaliconbutton.VerticalIconButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            app:n_icon="@mipmap/ic_launcher"
-            app:n_icon_margin_top="20dp"
-            app:n_icon_weight="150"
+            app:n_button_background_color_normal="#FB8C00"
             app:n_button_text="This is an example"
-            app:n_button_text_size="8sp"
-            />
+            app:n_button_text_size="6sp"
+            app:n_icon="@mipmap/ic_launcher"
+            app:n_icon_weight="90" />
+        <com.hadisyah.verticaliconbutton.VerticalIconBoxedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            app:button_text="This is an example"
+            app:button_text_size="7sp"
+            app:icon="@mipmap/ic_launcher"
+            app:icon_weight="90" />
 
         <com.hadisyah.verticaliconbutton.VerticalIconBoxedButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:icon_margin_top="20dp"
             android:layout_weight="1"
-            app:button_text_size="8sp"
-            app:icon_weight="150"
+            app:button_background_color_normal="#43A047"
+            app:icon_background_color="#FDD835"
             app:button_text="This is an example"
-            app:icon="@mipmap/ic_launcher" />
+            app:button_text_size="7sp"
+            app:icon="@mipmap/ic_launcher"
+            app:icon_weight="90" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/group1">
+
+        <com.hadisyah.verticaliconbutton.VerticalIconButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            app:n_button_background_color_normal="#5E35B1"
+            app:n_button_text="This is an example"
+            app:n_button_text_size="10sp"
+            app:n_icon="@mipmap/ic_launcher"
+            app:n_icon_margin_top="20dp"
+            app:n_icon_weight="150" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
