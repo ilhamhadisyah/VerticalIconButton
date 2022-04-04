@@ -74,8 +74,7 @@ class VerticalIconButton : MaterialCardView {
         inflate(mContext, R.layout.button_layout, this)
         this.isClickable = true
         this.isFocusable = true
-        cardElevation =0.0f
-        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 13f, context.resources.displayMetrics)
+        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15f, context.resources.displayMetrics)
 
         val arr: TypedArray =
             mContext.obtainStyledAttributes(attrs, R.styleable.VerticalIconButton, styleAttr, 0)

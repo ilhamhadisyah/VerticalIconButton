@@ -80,8 +80,7 @@ class VerticalIconBoxedButton  : MaterialCardView {
 
         this.isClickable = true
         this.isFocusable = true
-        cardElevation =0.0f
-        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 13f, context.resources.displayMetrics)
+        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15f, context.resources.displayMetrics)
 //        outlineProvider = ViewOutlineProvider.
 
         val arr: TypedArray =
