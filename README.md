@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/ilhamhadisyah/VerticalIconButton.svg)](https://jitpack.io/#ilhamhadisyah/VerticalIconButton)
 [![](https://img.shields.io/github/issues/ilhamhadisyah/VerticalIconButton)](https://github.com/ilhamhadisyah/VerticalIconButton/issues)
 [![](https://img.shields.io/github/forks/ilhamhadisyah/VerticalIconButton?color=blue)]()
-[![](https://img.shields.io/github/stars/ilhamhadisyah/VerticalIconButton?color=yellow)]()
+[![](https://img.shields.io/github/stars/ilhamhadisyah/VerticalIconButton?color=yellow)](https://github.com/ilhamhadisyah/VerticalIconButton/stargazers)
 
 <img src="./images/sample.jpg" width="250">
 
@@ -36,7 +36,7 @@ dependencyResolutionManagement {
     }
 }
 ```
-
+##### build.gradle
 Always use the latest release version
 ```gradle
 dependencies {
